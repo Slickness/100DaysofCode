@@ -44,7 +44,7 @@ class Player(object):
             total += cards[card]
 
         if 'A' in self.hand:
-            if total + 10 < 21:
+            if total + 10 < 22:
                 return total + 10
         else:
             return total
@@ -68,24 +68,76 @@ class Dealer(Player):
 
 # 6 deck game is most popular
 decks = Deck(6).getDecks()
+draws = 0
+playerWins = 0
+dealerWins = 0
+for i in range (0,200):
 
-player = Player(name = 'user')
-player.addCard(decks.pop())
-player.addCard(decks.pop())
-# do player stuff
+    # set up the player cards
+    player = Player(name = 'user', hand = [])
+    player.addCard(decks.pop())
+    player.addCard(decks.pop())
+    # do player stuff
 
+    # set up the dealer cards
 
-dealer = Dealer(name = 'dealer')
-dealer.addCard(decks.pop())
-dealer.addCard(decks.pop())
-
-
-print ('cards remaining {}'.format(len(decks)))
-
-if dealer.bust():
-    print ("Dealer Busts, players wins")
-
-if not dealer.stand():
+    dealer = Dealer(name = 'dealer', hand = [])
+    dealer.addCard(decks.pop())
     dealer.addCard(decks.pop())
 
-print (dealer.score())
+    print (player.hand)
+    # lets test auto with a player score of under 12 hitt
+    while player.score() < 13:
+
+        player.addCard(decks.pop())
+
+
+    print ('cards remaining {}'.format(len(decks)))
+
+    dPlaying = "playing"
+    # have the dealer play
+    while dPlaying == "playing":
+
+    #    print  ("\nThe dealers hand is {}".format(" ".join(str(e) for e in dealer.hand)))
+    #    print ("Current dealers score is {}".format(dealer.score()))
+        if dealer.bust():
+    #        print ("Dealer Busts, players wins")
+            winner = "Player"
+            dPlaying = False
+            continue
+        if dealer.stand():
+            dPlaying = False
+            continue
+        dealer.addCard(decks.pop())
+    #    print ("*" * 30)
+
+    print ("#" * 45)
+    print ("#" * 45)
+    print ("\n")
+    print ("Players hand {} with a total of {}".format(" ".join(str(e) for e in player.hand), player.score()))
+
+    print ("Dealers hand {} with a total of {}".format(" ".join(str(e) for e in dealer.hand), dealer.score()))
+    print ("\n")
+    print ("#" * 45)
+    print ("#" * 45)
+
+
+
+    if not dealer.bust():
+        if dealer.score() > player.score():
+            winner = "dealer"
+            dealerWins += 1
+        elif dealer.score() == player.score():
+            winner = "draw"
+            draws += 1
+        else:
+            winner = "player"
+            playerWins += 1
+
+    #if winner == "draw":
+    #    print ("There was a draw")
+    #else:
+    #    print ("The winner is {}".format(winner))
+    if len(decks) < 200:
+
+        decks = Deck(6).getDecks()
