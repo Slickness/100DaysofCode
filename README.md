@@ -7,3 +7,6 @@ Going to be working on Blackjack, had some issues, of stuff I know will continue
 
 ## Day 2 13 Aug 2018
 Things going OK, need to work on some fundamentals again, and need to clean code up it is a mess
+
+## Day 3 17 Aug 2018
+Got side track with work, decided to try to figure out scrapy for a side project that I am working on
