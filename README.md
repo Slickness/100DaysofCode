@@ -13,3 +13,6 @@ Got side track with work, decided to try to figure out scrapy for a side project
 
 ### Day 4 19 Aug 2018
 Got working on tutrial trying to understand how it all works, starting to get there
+
+### Day 5 20 Aug 2018
+Did not actually code today, but watched and read information on scrapy and xpath
