@@ -16,3 +16,6 @@ Got working on tutrial trying to understand how it all works, starting to get th
 
 ### Day 5 20 Aug 2018
 Did not actually code today, but watched and read information on scrapy and xpath
+
+### Day 6 21 Aug 2018
+Decided to get back to the basics, and try to build a stock scraper using only build in modules
